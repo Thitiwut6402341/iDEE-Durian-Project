@@ -10,7 +10,7 @@ export class ExperimentService {
   constructor(
     @InjectModel(Experiment.name)
     private readonly experimentModel: Model<Experiment>,
-  ) {}
+  ) { }
 
   //TODO [POST] /experiment
   async create(data: any): Promise<any> {
@@ -286,4 +286,8 @@ export class ExperimentService {
       };
     }
   }
+
+
+
+
 }

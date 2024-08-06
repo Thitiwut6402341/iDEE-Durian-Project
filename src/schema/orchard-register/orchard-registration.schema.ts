@@ -3,9 +3,8 @@ import { Document, mongo } from 'mongoose';
 
 export type OrchardRegisterDocument = OrchardRegister & Document;
 
-@Schema({ collection: 'OrchardRegisteration', versionKey: false })
+@Schema({ collection: 'OrchardRegistration', versionKey: false })
 export class OrchardRegister extends Document {
-
   @Prop()
   creator_id: mongo.ObjectId;
 
@@ -67,6 +66,9 @@ export class OrchardRegister extends Document {
   gap_img: string;
 
   @Prop()
+  gap_exp: string;
+
+  @Prop()
   tax_id: string;
 
   @Prop()
@@ -79,6 +81,9 @@ export class OrchardRegister extends Document {
   harvest_season: string;
 
   @Prop()
+  cultivar: string;
+
+  @Prop()
   capacity: number;
 
   @Prop()
@@ -87,10 +92,10 @@ export class OrchardRegister extends Document {
   @Prop()
   qa_by?: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

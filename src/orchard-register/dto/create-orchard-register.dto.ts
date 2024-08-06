@@ -34,7 +34,7 @@ export class CreateOrchardRegisterDto {
   address: string;
 
   @IsNumber()
-  @IsNotEmpty()
+  // @IsNotEmpty()
   total_trees: number;
 
 }

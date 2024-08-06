@@ -88,12 +88,13 @@ export class GradeSettingService {
                 ]
 
             );
+            // console.log(queryData);
 
             const result = queryData[0]?.grade_system?.find((item) =>
                 eval(item.formula)(inspected_grade, number_of_segments, weight),
             );
 
-            console.log(result?.grade ?? 'No grade found');
+
             const export_grade = result?.grade ?? 'No grade found';
 
             return {

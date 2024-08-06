@@ -6,14 +6,15 @@ import {
   OrchardRegister,
   OrchardRegisterSchema,
 } from 'src/schema/orchard/orchard-register.schema';
-import {
-  DepartmentProvincial,
-  DepartmentProvincialSchema,
-} from 'src/schema/orchard/department-provincial.schema';
+
 import {
   DataCollection,
   DataCollectionSchema,
 } from 'src/schema/hardware/data-collection.schema';
+import {
+  DeviceRegistration,
+  DeviceRegistrationSchema,
+} from 'src/schema/hardware/device-registration.schema';
 import {
   TreesRegistration,
   TreesRegistrationSchema,
@@ -23,12 +24,12 @@ import {
   imports: [
     MongooseModule.forFeature([
       { name: OrchardRegister.name, schema: OrchardRegisterSchema },
-      { name: DepartmentProvincial.name, schema: DepartmentProvincialSchema },
       { name: DataCollection.name, schema: DataCollectionSchema },
       { name: TreesRegistration.name, schema: TreesRegistrationSchema },
+      { name: DeviceRegistration.name, schema: DeviceRegistrationSchema },
     ]),
   ],
   controllers: [OrchardRegisterController],
   providers: [OrchardRegisterService],
 })
-export class OrchardRegisterModule { }
+export class OrchardRegisterModule {}

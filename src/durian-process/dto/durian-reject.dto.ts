@@ -11,7 +11,7 @@ export class DurianRejectDto {
 
     @IsString()
     @IsNotEmpty()
-    fruit_code: string;
+    rfid_code: string;
 
     @IsString()
     @IsNotEmpty()

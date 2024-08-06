@@ -9,33 +9,15 @@ export class WeightingsProcess extends Document {
   rfid_code: string;
 
   @Prop()
-  fruit_code: string;
-
-  @Prop()
   weight: number;
-
-  @Prop()
-  tree_code: string;
-
-  @Prop({ nullable: false })
-  inspected_grade: string;
-
-  @Prop({ nullable: false })
-  maturity: string;
-
-  @Prop({ nullable: false })
-  number_of_segments: number;
-
-  @Prop({ nullable: false })
-  export_grade: string;
 
   @Prop({ required: true })
   creator_id: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

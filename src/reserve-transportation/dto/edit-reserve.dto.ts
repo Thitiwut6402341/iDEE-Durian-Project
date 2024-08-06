@@ -1,48 +1,38 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { IsNull } from 'typeorm';
+import { IsNotEmpty, IsNumber, IsString, IsIn } from 'class-validator';
 
 export class EditReserveDto {
+  @IsString()
+  @IsNotEmpty()
+  reserve_id: string;
 
-    @IsString()
-    @IsNotEmpty()
-    reserve_id: string;
+  product_name?: string;
 
-    product_name?: string;
+  container_no?: string;
 
-    packing_house_code?: string;
+  trademark_img?: string;
 
-    destination?: string;
+  @IsString()
+  @IsNotEmpty()
+  @IsIn(['plane', 'train'])
+  export_type: string;
 
-    container_type?: string;
+  product_list?: string;
 
-    container_no?: string;
+  packaging_shape?: string;
 
-    weight?: number;
+  volume?: number;
 
-    date_time?: string;
+  booking_ref?: string;
 
-    product_list?: string;
+  freight_forwarder?: string;
 
-    packaging_shape?: string;
+  air_line?: string;
 
-    volume?: number;
+  flight?: string;
 
-    booking_ref?: string;
+  flight_depart_date?: string;
 
-    freight_forwarder?: string;
+  flight_arrive_date?: string;
 
-    export_type?: string;
-
-    air_line?: string;
-
-    flight?: string;
-
-    flight_depart_date?: string;
-
-    flight_arrive_date?: string;
-
-    trade_mark?: string;
-
-    packaging_no?: string;
-
+  email_freight?: string;
 }

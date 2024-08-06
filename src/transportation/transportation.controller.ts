@@ -1,4 +1,4 @@
-import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
 import { TransportationService } from './transportation.service';
 import { TransportationDto } from './dto/transportation.dto';
 
@@ -10,6 +10,11 @@ export class TransportationController {
   async TransportationStation(@Body(new ValidationPipe()) transportationDto: TransportationDto) {
     return await this.transportationService.TransportationStation(transportationDto);
   }
+
+  // @Get('lot-id')
+  // async GetAllLotId() {
+  //   return await this.transportationService.GetAllLotId();
+  // }
 
   // @Post('departure')
 }

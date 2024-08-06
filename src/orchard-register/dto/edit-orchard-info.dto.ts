@@ -1,6 +1,7 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class EditOrchardInfoDto {
+  @IsString()
   @IsNotEmpty()
   orchard_code: string;
 
@@ -28,6 +29,7 @@ export class EditOrchardInfoDto {
 
   owner_last_name: string;
 
+  // @IsString()
   phone: string;
 
   email: string;
@@ -40,6 +42,8 @@ export class EditOrchardInfoDto {
 
   gap_img: string;
 
+  gap_exp: string;
+
   tax_id: string;
 
   soil_type: string;
@@ -48,8 +52,9 @@ export class EditOrchardInfoDto {
 
   harvest_season: string;
 
-  capacity: number;
+  cultivar: string;
+
+  avg_fruit_per_tree: number;
 
   is_qa_verify?: boolean;
-
 }

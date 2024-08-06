@@ -6,7 +6,9 @@ import {
   Delete,
   Body,
   Param,
+  Res,
 } from '@nestjs/common';
+import { Response } from 'express';
 import { SettingService } from './setting.service';
 import {
   CreateNgCaseDto,
@@ -17,53 +19,86 @@ import {
 
 @Controller('setting')
 export class SettingController {
-  constructor(private readonly settingService: SettingService) { }
+  constructor(private readonly settingService: SettingService) {}
 
   //! NG Case -------------------------------------------------------------------------
   @Post('ng-case')
-  createNgCase(@Body() createNgCaseDto: CreateNgCaseDto) {
-    return this.settingService.createNgCase(createNgCaseDto);
+  async createNgCase(
+    @Body() createNgCaseDto: CreateNgCaseDto,
+    @Res() res: Response,
+  ) {
+    // return this.settingService.createNgCase(createNgCaseDto);
+    const result = await this.settingService.createNgCase(createNgCaseDto);
+    return res.status(result.statusCode).json(result);
   }
 
   @Get('ng-case')
-  getNgCases() {
-    return this.settingService.getNgCases();
+  async getNgCases(@Res() res: Response) {
+    // return this.settingService.getNgCases();
+    const result = await this.settingService.getNgCases();
+    return res.status(result.statusCode).json(result);
   }
 
   @Put('ng-case')
-  updateNgCase(@Body() updateNgCaseDto: UpdateNgCaseDto) {
-    return this.settingService.updateNgCase(updateNgCaseDto);
+  async updateNgCase(
+    @Body() updateNgCaseDto: UpdateNgCaseDto,
+    @Res() res: Response,
+  ) {
+    // return this.settingService.updateNgCase(updateNgCaseDto);
+    const result = await this.settingService.updateNgCase(updateNgCaseDto);
+    return res.status(result.statusCode).json(result);
   }
 
-  // @Delete('ng-case/:case_id')
-  // deleteNgCase(@Param('case_id') case_id: string) {
-  //   return this.settingService.deleteNgCase(case_id);
-  // }
+  @Delete('ng-case/:case_id')
+  async deleteNgCase(@Param('case_id') case_id: string, @Res() res: Response) {
+    // return this.settingService.deleteNgCase(case_id);
+    const result = await this.settingService.deleteNgCase(case_id);
+    return res.status(result.statusCode).json(result);
+  }
 
   //! Soil Types -------------------------------------------------------------------------
   @Get('soil-types')
-  getSoilTypes() {
-    return this.settingService.getSoilTypes();
+  async getSoilTypes(@Res() res: Response) {
+    // return this.settingService.getSoilTypes();
+    const result = await this.settingService.getSoilTypes();
+    return res.status(result.statusCode).json(result);
   }
 
   //! Cultivar -------------------------------------------------------------------------
   @Post('cultivar')
-  createCultivar(@Body() createCultivarDto: CreateCultivarDto) {
-    return this.settingService.createCultivar(createCultivarDto);
+  async createCultivar(
+    @Body() createCultivarDto: CreateCultivarDto,
+    @Res() res: Response,
+  ) {
+    // return this.settingService.createCultivar(createCultivarDto);
+    const result = await this.settingService.createCultivar(createCultivarDto);
+    return res.status(result.statusCode).json(result);
   }
 
   @Get('cultivar')
-  getCultivars() {
-    return this.settingService.getCultivars();
+  async getCultivars(@Res() res: Response) {
+    // return this.settingService.getCultivars();
+    const result = await this.settingService.getCultivars();
+    return res.status(result.statusCode).json(result);
   }
 
   @Put('cultivar')
-  updateCultivar(@Body() updateCultivarDto: UpdateCultivarDto) {
-    return this.settingService.updateCultivar(updateCultivarDto);
+  async updateCultivar(
+    @Body() updateCultivarDto: UpdateCultivarDto,
+    @Res() res: Response,
+  ) {
+    // return this.settingService.updateCultivar(updateCultivarDto);
+    const result = await this.settingService.updateCultivar(updateCultivarDto);
+    return res.status(result.statusCode).json(result);
   }
 
   @Delete('cultivar/:cultivar_id')
-  deleteCultivar(@Param('cultivar_id') cultivar_id: string) {
-    return this.settingService.deleteCultivar(cultivar_id);
+  async deleteCultivar(
+    @Param('cultivar_id') cultivar_id: string,
+    @Res() res: Response,
+  ) {
+    // return this.settingService.deleteCultivar(cultivar_id);
+    const result = await this.settingService.deleteCultivar(cultivar_id);
+    return res.status(result.statusCode).json(result);
   }
 }

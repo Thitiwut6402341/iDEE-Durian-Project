@@ -8,15 +8,6 @@ export class CountSegmentsProcess extends Document {
   @Prop({ required: true })
   rfid_code: string;
 
-  @Prop()
-  fruit_code: string;
-
-  @Prop()
-  tree_code: string;
-
-  @Prop()
-  inspected_grade: string;
-
   @Prop({ required: true })
   number_of_segments: number;
 
@@ -26,10 +17,10 @@ export class CountSegmentsProcess extends Document {
   @Prop({ required: true })
   creator_id: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

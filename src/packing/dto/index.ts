@@ -4,6 +4,7 @@ export * from './create-chemical-process3.dto';
 export * from './create-count-segments-process.dto';
 export * from './create-weightings-process.dto';
 export * from './create-packing-process.dto';
+export * from './create-packing-process2.dto';
 export * from './create-freezer-process.dto';
 export * from './create-transportation-process.dto';
 export * from './edit-weightings-process.dto';

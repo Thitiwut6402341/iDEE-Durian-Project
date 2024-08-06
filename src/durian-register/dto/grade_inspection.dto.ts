@@ -1,14 +1,13 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString, IsArray, ArrayMinSize } from 'class-validator';
 
 export class GradeInspectionDto {
-    @IsString()
-    @IsNotEmpty()
-    rfid_code: string;
+  @IsArray()
+  @ArrayMinSize(1)
+  rfid_codes: string[];
 
-    remarks: string;
+  remarks?: string;
 
-    @IsString()
-    @IsNotEmpty()
-    inspected_grade: string;
-
+  @IsString()
+  @IsNotEmpty()
+  inspected_grade: string;
 }

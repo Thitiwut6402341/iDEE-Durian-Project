@@ -1,32 +1,28 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, mongo } from 'mongoose';
 
-export type TransportationProcessDocument = TransportationProcess & Document;
+export type TransportationDocument = Transportation & Document;
 
-@Schema({ collection: 'TransportationProcess', versionKey: false })
-export class TransportationProcess extends Document {
-  @Prop({ required: true })
-  lot_id: string;
-
-  @Prop({ required: true })
+@Schema({ collection: 'Transportation', versionKey: false })
+export class Transportation {
+  @Prop()
   rfid_code: string;
 
-  @Prop({ required: true })
-  booking_ref: string;
+  @Prop()
+  reserve_id: mongo.ObjectId;
 
-  @Prop({ nullable: false })
-  origin: string; // packing house code
+  @Prop()
+  container_no: string;
 
-  @Prop({ required: true })
+  @Prop()
   creator_id: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 
-export const TransportationProcessSchema = SchemaFactory.createForClass(
-  TransportationProcess,
-);
+export const TransportationSchema =
+  SchemaFactory.createForClass(Transportation);

@@ -1,49 +1,70 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, mongo } from 'mongoose';
+import { HydratedDocument, mongo } from 'mongoose';
 
-export type DurianRegisterDocument = Document<DurianRegistration>;
+export type DurianRegistrationDocument = HydratedDocument<DurianRegistration>;
 
 @Schema({ collection: 'DurianRegistration', versionKey: false })
 export class DurianRegistration {
+  @Prop({ nullable: false })
+  tree_code: string;
 
-    @Prop({ nullable: false })
-    tree_code: string;
+  @Prop({ nullable: false })
+  orchard_code: string;
 
-    @Prop({ nullable: false })
-    orchard_code: string;
+  @Prop()
+  packing_house_code: string;
 
-    @Prop({ nullable: false })
-    packing_house_code: string;
+  @Prop({ nullable: false, unique: true })
+  rfid_code: string;
 
-    @Prop({ nullable: false })
-    rfid_code: string;
+  @Prop({ nullable: true })
+  container_no: string;
 
-    @Prop({ nullable: false })
-    fruit_code: string;
+  @Prop({ nullable: true })
+  inspected_grade: string;
 
-    @Prop({ nullable: true })
-    lot_id: string;
+  @Prop({ nullable: true })
+  export_grade: string;
 
-    @Prop({ nullable: true })
-    inspected_grade: string;
+  @Prop({ nullable: true })
+  maturity: number;
 
-    // @Prop({nullable: true})
-    // is_passed: boolean;
+  @Prop({ nullable: true })
+  weight: number;
 
-    @Prop({ nullable: true })
-    inspected_by: mongo.ObjectId;
+  @Prop({ nullable: true })
+  weight_sale: number;
 
-    @Prop()
-    remarks: string;
+  @Prop({ nullable: true })
+  number_of_segments: number;
 
-    @Prop()
-    created_at: Date;
+  @Prop({ nullable: true })
+  gps_no: string;
 
-    @Prop()
-    updated_at: Date;
+  @Prop({ nullable: true })
+  inspected_by: mongo.ObjectId;
 
-    @Prop()
-    registered_at: Date;
+  @Prop()
+  remarks: string;
+
+  @Prop()
+  status: boolean;
+
+  @Prop()
+  is_reject: boolean;
+
+  @Prop()
+  booking_ref: string;
+
+  @Prop()
+  created_at: Date;
+
+  @Prop()
+  updated_at: Date;
+
+  @Prop()
+  registered_at: Date;
 }
 
-export const DurianRegistrationSchema = SchemaFactory.createForClass(DurianRegistration);
+export const DurianRegistrationSchema =
+  SchemaFactory.createForClass(DurianRegistration);

@@ -43,6 +43,7 @@ export class EditPackingHouseRegisterDto {
 
   tax_id?: string;
 
+  @IsString()
   phone?: string;
 
   email?: string;

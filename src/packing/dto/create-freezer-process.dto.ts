@@ -4,4 +4,7 @@ export class CreateFreezerProcessDto {
   @IsArray()
   @ArrayMinSize(1)
   rfid_codes: string[];
+
+  @IsArray()
+  timestamp: string[];
 }

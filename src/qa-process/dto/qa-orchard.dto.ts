@@ -12,4 +12,8 @@ export class QAOrchardDto {
     @IsString()
     @IsNotEmpty()
     gap_file: string
+
+    @IsString()
+    @IsNotEmpty()
+    gap_exp: Date
 }

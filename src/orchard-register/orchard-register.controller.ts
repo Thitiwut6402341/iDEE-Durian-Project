@@ -4,70 +4,105 @@ import {
   Post,
   Body,
   Put,
-  ValidationPipe,
   Req,
+  Res,
   Delete,
   Query,
-  Request,
 } from '@nestjs/common';
 import { OrchardRegisterService } from './orchard-register.service';
-import { CreateOrchardRegisterDto } from './dto/create-orchard-register.dto';
-import { OrchardInfoDto } from './dto/orchard-info.dto';
-import { EditOrchardInfoDto } from './dto/edit-orchard-info.dto';
 import { TJwtPayload } from 'src/types/jwt-payload';
+import { Request, Response } from 'express';
+
+import {
+  CreateOrchardRegisterDto,
+  OrchardInfoDto,
+  EditOrchardInfoDto,
+} from './dto';
 
 @Controller('orchard-register')
 export class OrchardRegisterController {
   constructor(
     private readonly orchardRegisterService: OrchardRegisterService,
-  ) { }
+  ) {}
 
   @Get('get-datacollection')
-  async getDataCollection() {
-    return this.orchardRegisterService.getDataCollection();
+  async getDataCollection(@Res() res: Response) {
+    // return this.orchardRegisterService.getDataCollection();
+    const result = await this.orchardRegisterService.getDataCollection();
+    return res.status(res.statusCode).json(result);
+  }
+
+  @Get('iot-devices')
+  async findAllDevices(@Res() res: Response) {
+    // return this.orchardRegisterService.getDataCollection();
+    const result = await this.orchardRegisterService.findAllDevices();
+    return res.status(res.statusCode).json(result);
   }
 
   @Post('register')
   async OrchardRegister(
     @Body() createOrchardRegisterDto: CreateOrchardRegisterDto,
-    @Request() req: any,
+    @Req() req: Request & { decoded: TJwtPayload },
+    @Res() res: Response,
   ) {
-    const { decoded } = req;
-    return await this.orchardRegisterService.OrchardRegister(
+    // return await this.orchardRegisterService.createOrchardRegister(
+    //   createOrchardRegisterDto,
+    //   req.decoded,
+    // );
+    const result = await this.orchardRegisterService.createOrchardRegister(
       createOrchardRegisterDto,
-      decoded,
+      req.decoded,
     );
+    return res.status(res.statusCode).json(result);
   }
 
   @Get('all-orchard')
-  async findAll() {
-    return this.orchardRegisterService.findAll();
+  async findAll(@Res() res: Response) {
+    // return this.orchardRegisterService.findAll();
+    const result = await this.orchardRegisterService.findAll();
+    return res.status(res.statusCode).json(result);
   }
 
   @Get('all-id')
-  async findID() {
-    return this.orchardRegisterService.findID();
+  async findID(@Res() res: Response) {
+    // return this.orchardRegisterService.findID();
+    const result = await this.orchardRegisterService.findID();
+    return res.status(res.statusCode).json(result);
   }
 
   @Post('orchard-info')
   async getOrchardInformation(
-    @Body(new ValidationPipe()) orchardInfoDto: OrchardInfoDto,
+    @Body() orchardInfoDto: OrchardInfoDto,
+    @Res() res: Response,
   ) {
-    return this.orchardRegisterService.getOrchardInformation(orchardInfoDto);
+    // return this.orchardRegisterService.getOrchardInformation(orchardInfoDto);
+    const result =
+      await this.orchardRegisterService.getOrchardInformation(orchardInfoDto);
+    return res.status(res.statusCode).json(result);
   }
 
   @Put('edit-info')
   async editInformation96(
-    @Body(new ValidationPipe()) editOrchardInfoDto: EditOrchardInfoDto,
-    @Request() req: any,
-
+    @Body() editOrchardInfoDto: EditOrchardInfoDto,
+    // @Req() req: Request & { decoded: TJwtPayload },
+    @Res() res: Response,
   ) {
-    const { decoded } = req;
-    return this.orchardRegisterService.editInformation(editOrchardInfoDto, decoded);
+    // return this.orchardRegisterService.editInformation(
+    //   editOrchardInfoDto,
+    //   req.decoded,
+    // );
+    const result =
+      await this.orchardRegisterService.editInformation(editOrchardInfoDto);
+    return res.status(res.statusCode).json(result);
   }
 
   @Delete('delete-orchard')
-  async deleteOrchard(@Query('orchard_code') orchardCode: string) {
-    return this.orchardRegisterService.deleteOrchard(orchardCode);
+  async deleteOrchard(
+    @Query('orchard_code') orchardCode: string,
+    @Res() res: Response,
+  ) {
+    // return this.orchardRegisterService.deleteOrchard(orchardCode);
+    const result = await this.orchardRegisterService.deleteOrchard(orchardCode);
+    return res.status(res.statusCode).json(result);
   }
 }

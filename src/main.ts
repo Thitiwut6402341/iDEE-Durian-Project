@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-// import { ResponseInterceptor } from 'src/common/interceptors';
+import { ResponseInterceptor } from 'src/common/interceptors';
 import { urlencoded, json } from 'express';
 
 async function bootstrap() {
@@ -10,8 +10,9 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.use(json({ limit: '50mb' }));
   app.use(urlencoded({ extended: true, limit: '50mb' }));
-  // app.useGlobalInterceptors(new ResponseInterceptor());
+  app.useGlobalInterceptors(new ResponseInterceptor());
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(30105);
+  const server = await app.listen(3000);
+  server.setTimeout(300000); // 5 minutes
 }
 bootstrap();

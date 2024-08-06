@@ -1,10 +1,9 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class PackingHouseRegisterDto {
-
   @IsString()
   @IsNotEmpty()
-  packing_name: string;
+  packing_house_name: string;
 
   @IsString()
   @IsNotEmpty()
@@ -25,5 +24,4 @@ export class PackingHouseRegisterDto {
   @IsString()
   @IsNotEmpty()
   address: string;
-
 }

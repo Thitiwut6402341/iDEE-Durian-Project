@@ -1,15 +1,25 @@
-import { IsString, IsNotEmpty, IsArray, ArrayMinSize } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsMongoId,
+  IsArray,
+  ArrayMinSize,
+} from 'class-validator';
 
 export class CreateTransportationProcessDto {
   @IsArray()
   @ArrayMinSize(1)
   rfid_codes: string[];
 
-  @IsString()
+  @IsArray()
+  @ArrayMinSize(1)
+  timestamp: string[];
+
+  @IsMongoId()
   @IsNotEmpty()
-  booking_ref: string;
+  reserve_id: string;
 
   @IsString()
   @IsNotEmpty()
-  packing_house_code: string;
+  container_no: string;
 }

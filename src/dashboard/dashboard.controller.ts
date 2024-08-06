@@ -16,5 +16,10 @@ export class DashboardController {
     return await this.dashboardService.exportData()
   }
 
+  @Get('db-premium')
+  async dbPremium(): Promise<any> {
+    return await this.dashboardService.dbPremium()
+  }
+
 
 }

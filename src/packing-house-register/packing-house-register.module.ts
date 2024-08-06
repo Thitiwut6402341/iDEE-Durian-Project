@@ -6,10 +6,7 @@ import {
   OrchardRegister,
   OrchardRegisterSchema,
 } from 'src/schema/orchard/orchard-register.schema';
-import {
-  DepartmentProvincial,
-  DepartmentProvincialSchema,
-} from 'src/schema/orchard/department-provincial.schema';
+
 import {
   PackingHouseRegister,
   PackingHouseRegisterSchema,
@@ -19,11 +16,10 @@ import {
   imports: [
     MongooseModule.forFeature([
       { name: OrchardRegister.name, schema: OrchardRegisterSchema },
-      { name: DepartmentProvincial.name, schema: DepartmentProvincialSchema },
       { name: PackingHouseRegister.name, schema: PackingHouseRegisterSchema },
     ]),
   ],
   controllers: [PackingHouseRegisterController],
   providers: [PackingHouseRegisterService],
 })
-export class PackingHouseRegisterModule {}
+export class PackingHouseRegisterModule { }

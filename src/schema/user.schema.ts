@@ -20,10 +20,10 @@ export class User extends Document {
   @Prop({ default: false })
   is_locked: boolean;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

@@ -11,10 +11,10 @@ export class FreezerProcess extends Document {
   @Prop()
   creator_id: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

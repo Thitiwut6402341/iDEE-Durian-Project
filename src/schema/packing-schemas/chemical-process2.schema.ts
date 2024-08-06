@@ -14,10 +14,10 @@ export class ChemicalProcess2 extends Document {
   @Prop({ required: true })
   creator_id: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

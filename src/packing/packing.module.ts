@@ -17,8 +17,8 @@ import {
   FreezerProcessSchema,
   PackingProcess,
   PackingProcessSchema,
-  TransportationProcess,
-  TransportationProcessSchema,
+  Transportation,
+  TransportationSchema,
 
 } from 'src/schema/packing-schemas';
 import {
@@ -64,9 +64,10 @@ import { GradeSettingModule } from 'src/grade-setting/grade-setting.module';
         schema: DurianRegistrationSchema,
       },
       {
-        name: TransportationProcess.name,
-        schema: TransportationProcessSchema,
-      }
+        name: Transportation.name,
+        schema: TransportationSchema,
+      },
+
     ]),
     GradeSettingModule,
   ],

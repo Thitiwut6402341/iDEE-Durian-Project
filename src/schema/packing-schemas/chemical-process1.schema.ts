@@ -5,19 +5,20 @@ export type ChemicalProcess1Document = ChemicalProcess1 & Document;
 
 @Schema({ collection: 'ChemicalProcess1', versionKey: false })
 export class ChemicalProcess1 extends Document {
+  // @Prop({ required: true, index: true })
   @Prop({ required: true })
   rfid_code: string;
 
   @Prop({ required: true })
   packing_house_code: string;
 
-  @Prop({ required: true })
+  @Prop()
   creator_id: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

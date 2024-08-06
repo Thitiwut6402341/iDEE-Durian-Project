@@ -6,10 +6,7 @@ import {
   DurianRegistration,
   DurianRegistrationSchema,
 } from 'src/schema/durian-registration.schema';
-import {
-  DepartmentProvincial,
-  DepartmentProvincialDetailSchema,
-} from 'src/schema/department-provincial.schema';
+
 import {
   TreesRegistration,
   TreesRegistrationSchema,
@@ -19,12 +16,6 @@ import {
   imports: [
     MongooseModule.forFeature([
       { name: DurianRegistration.name, schema: DurianRegistrationSchema },
-    ]),
-    MongooseModule.forFeature([
-      {
-        name: DepartmentProvincial.name,
-        schema: DepartmentProvincialDetailSchema,
-      },
     ]),
     MongooseModule.forFeature([
       { name: TreesRegistration.name, schema: TreesRegistrationSchema },

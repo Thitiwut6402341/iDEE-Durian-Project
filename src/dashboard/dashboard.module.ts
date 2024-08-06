@@ -15,21 +15,19 @@ import {
   DurianRegistration,
   DurianRegistrationSchema,
 } from 'src/schema/durian-register/durian-registration.schema';
+import { Transportation, TransportationSchema } from 'src/schema/transportation.schema';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: WeightingsProcess.name, schema: WeightingsProcessSchema },
-    ]),
-    // MongooseModule.forFeature([{ name: Dashboard.name, schema: DashboardServiceSchema }]),
-    MongooseModule.forFeature([
       { name: Departure.name, schema: DepartureSchema },
-    ]),
-    MongooseModule.forFeature([
       { name: DurianRegistration.name, schema: DurianRegistrationSchema },
+      { name: Transportation.name, schema: TransportationSchema }
     ]),
+
   ],
   controllers: [DashboardController],
   providers: [DashboardService],
 })
-export class DashboardModule {}
+export class DashboardModule { }

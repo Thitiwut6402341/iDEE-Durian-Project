@@ -35,10 +35,10 @@ export class DepartmentProvincial extends Document {
   @Prop()
   longitude: string;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

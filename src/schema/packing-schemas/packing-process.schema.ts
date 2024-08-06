@@ -11,14 +11,13 @@ export class PackingProcess extends Document {
   @Prop({ required: true })
   packaging_type: string;
 
-
   @Prop({ required: true })
   creator_id: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

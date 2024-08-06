@@ -14,10 +14,10 @@ export class Cultivar extends Document {
   @Prop()
   description: string;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 

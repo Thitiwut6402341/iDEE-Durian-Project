@@ -1,28 +1,25 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, mongo } from 'mongoose';
 
-export type ChemicalProcessDocument = ChemicalProcess & Document;
+export type ChemicalProcess1Document = ChemicalProcess1 & Document;
 
 @Schema({ collection: 'ChemicalProcess1', versionKey: false })
-export class ChemicalProcess extends Document {
-
-  @Prop()
-  packing_house_code: string;
-
-  @Prop()
-  fruit_code: string;
+export class ChemicalProcess1 extends Document {
+  @Prop({ required: true })
+  rfid_code: string;
 
   @Prop({ required: true })
-  rfid_code: string[];
+  packing_house_code: string;
 
   @Prop({ required: true })
   creator_id: mongo.ObjectId;
 
-  @Prop({ default: Date.now })
+  @Prop()
   created_at: Date;
 
-  @Prop({ default: Date.now })
+  @Prop()
   updated_at: Date;
 }
 
-export const ChemicalProcessSchema = SchemaFactory.createForClass(ChemicalProcess);
+export const ChemicalProcess1Schema =
+  SchemaFactory.createForClass(ChemicalProcess1);

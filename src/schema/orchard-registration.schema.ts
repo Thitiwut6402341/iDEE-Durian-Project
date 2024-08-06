@@ -3,96 +3,101 @@ import { Document, mongo } from 'mongoose';
 
 export type OrchardRegisterDocument = OrchardRegister & Document;
 
-@Schema({ collection: 'OrchardRegisteration', versionKey: false })
+@Schema({ collection: 'OrchardRegistration', versionKey: false })
 export class OrchardRegister extends Document {
+  @Prop()
+  creator_id: mongo.ObjectId;
 
-    @Prop()
-    creator_id: mongo.ObjectId;
+  @Prop()
+  orchard_code: string;
 
-    @Prop()
-    orchard_code: string;
+  @Prop()
+  orchard_name: string;
 
-    @Prop()
-    orchard_name: string;
+  @Prop()
+  province: string;
 
-    @Prop()
-    province: string;
+  @Prop()
+  district: string;
 
-    @Prop()
-    district: string;
+  @Prop()
+  sub_district: string;
 
-    @Prop()
-    sub_district: string;
+  @Prop()
+  zip_code: string;
 
-    @Prop()
-    zip_code: string;
+  @Prop()
+  address: string;
 
-    @Prop()
-    address: string;
+  @Prop()
+  area_rai: number;
 
-    @Prop()
-    area_rai: number;
+  @Prop()
+  area_ngan: number;
 
-    @Prop()
-    area_ngan: number;
+  @Prop()
+  area_wa: number;
 
-    @Prop()
-    area_wa: number;
+  @Prop()
+  title_name: string;
 
-    @Prop()
-    title_name: string;
+  @Prop()
+  owner_first_name: string;
 
-    @Prop()
-    owner_first_name: string;
+  @Prop()
+  owner_last_name: string;
 
-    @Prop()
-    owner_last_name: string;
+  @Prop()
+  phone: string;
 
-    @Prop()
-    phone: string;
+  @Prop()
+  email: string;
 
-    @Prop()
-    email: string;
+  @Prop()
+  latitude: string;
 
-    @Prop()
-    latitude: string;
+  @Prop()
+  longitude: string;
 
-    @Prop()
-    longitude: string;
+  @Prop()
+  gap_no: string;
 
-    @Prop()
-    gap_no: string;
+  @Prop()
+  gap_img: string;
 
-    @Prop()
-    gap_img: string;
+  @Prop()
+  gap_exp: string;
 
-    @Prop()
-    tax_id: string;
+  @Prop()
+  tax_id: string;
 
-    @Prop()
-    soil_type: string;
+  @Prop()
+  soil_type: string;
 
-    @Prop()
-    total_trees: number;
+  @Prop()
+  total_trees: number;
 
-    @Prop()
-    harvest_season: string;
+  @Prop()
+  harvest_season: string;
 
-    @Prop()
-    capacity: number;
+  @Prop()
+  cultivar: string;
 
-    @Prop()
-    is_qa_verify?: boolean;
+  @Prop()
+  capacity: number;
 
-    @Prop()
-    qa_by?: mongo.ObjectId;
+  @Prop()
+  is_qa_verify?: boolean;
 
-    @Prop({ default: Date.now })
-    created_at: Date;
+  @Prop()
+  qa_by?: mongo.ObjectId;
 
-    @Prop({ default: Date.now })
-    updated_at: Date;
+  @Prop()
+  created_at: Date;
+
+  @Prop()
+  updated_at: Date;
 }
 
 export const OrchardRegisterSchema =
-    SchemaFactory.createForClass(OrchardRegister);
+  SchemaFactory.createForClass(OrchardRegister);

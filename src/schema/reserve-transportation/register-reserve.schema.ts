@@ -5,76 +5,82 @@ export type ReserveTransportationDocument = ReserveTransportation & Document;
 
 @Schema({ collection: 'ReserveTransportation', versionKey: false })
 export class ReserveTransportation extends Document {
+  @Prop()
+  product_name: string;
 
-    @Prop()
-    creator_by: mongo.ObjectId;
+  @Prop()
+  email_freight: string;
 
-    @Prop()
-    product_name: string;
+  @Prop()
+  packing_house_code: string;
 
-    @Prop()
-    packing_house_code: string;
+  @Prop()
+  orchard_codes: string[];
 
-    @Prop()
-    orchard_code: string[];
+  @Prop()
+  destination: string;
 
-    @Prop()
-    destination: string;
+  @Prop()
+  container_type: string;
 
-    @Prop()
-    container_type: string;
+  @Prop()
+  number_of_container: number;
 
-    @Prop()
-    container_no: string;
+  // @Prop()
+  // container_no: number;
 
-    @Prop()
-    weight: number;
+  @Prop()
+  date_time: string;
 
-    @Prop()
-    date_time: string;
+  @Prop()
+  trademark_img: string;
 
-    @Prop()
-    product_list: string;
+  @Prop()
+  product_list: string;
 
-    @Prop()
-    packaging_shape: string;
+  @Prop()
+  packaging_shape: string;
 
-    @Prop()
-    volume: number;
+  @Prop()
+  volume: number;
 
-    @Prop()
-    booking_ref: string;
+  @Prop({ unique: true })
+  booking_ref: string;
 
-    @Prop()
-    freight_forwarder: string;
+  @Prop()
+  freight_forwarder: string;
 
-    @Prop()
-    export_type: string;
+  @Prop()
+  export_type: string;
 
-    @Prop()
-    air_line: string;
+  @Prop()
+  air_line: string;
 
-    @Prop()
-    flight: string;
+  @Prop()
+  flight: string;
 
-    @Prop()
-    flight_depart_date: string;
+  @Prop()
+  flight_depart_date: string;
 
-    @Prop()
-    flight_arrive_date: string;
+  @Prop()
+  flight_arrive_date: string;
 
-    @Prop()
-    trade_mark: string;
+  @Prop()
+  trade_mark: string;
 
-    @Prop()
-    packaging_no: string;
+  @Prop()
+  packaging_no: string;
 
-    @Prop({ default: Date.now })
-    created_at: Date;
+  @Prop()
+  creator_id: mongo.ObjectId;
 
-    @Prop({ default: Date.now })
-    updated_at: Date;
+  @Prop()
+  created_at: Date;
+
+  @Prop()
+  updated_at: Date;
 }
 
-export const ReserveTransportationSchema =
-    SchemaFactory.createForClass(ReserveTransportation);
+export const ReserveTransportationSchema = SchemaFactory.createForClass(
+  ReserveTransportation,
+);

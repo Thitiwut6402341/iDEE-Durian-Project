@@ -1,7 +1,6 @@
 import { IsArray, ArrayMinSize, IsString, IsNumber } from 'class-validator';
 
 export class EditWeightingsProcessDto {
-
   @IsString()
   rfid_code: string;
 
@@ -14,8 +13,10 @@ export class EditWeightingsProcessDto {
   @IsNumber()
   weight: number;
 
-  @IsString()
-  export_grade: string;
+  export_grade?: string;
 
+  @IsNumber()
+  maturity: number;
+
+  remarks?: string;
 }
-

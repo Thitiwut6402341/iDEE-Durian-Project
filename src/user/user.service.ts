@@ -18,7 +18,7 @@ export class UserService {
   constructor(
     @InjectModel(User.name)
     private UserModel: Model<UserDocument>,
-  ) { }
+  ) {}
 
   async login(loginDto: LoginDto) {
     // return loginDto;
@@ -39,32 +39,39 @@ export class UserService {
       );
 
       if (!user)
-        throw new BadRequestException(
-          'There is no user with this email address',
-        );
+        return {
+          status: 'error',
+          statusCode: 400,
+          message: 'There is no user with this email address',
+          data: [],
+        };
 
       // const userWithUserId = user as User & { user_id: string };
 
       const isMatched = await bcrypt.compare(loginDto.password, user.password);
 
       if (!isMatched)
-        throw new BadRequestException(
-          'Password is incorrect, please try again',
-        );
+        return {
+          status: 'error',
+          statusCode: 400,
+          message: 'Password is incorrect, please try again',
+          data: [],
+        };
 
       //? generate token
       const payload: TJwtPayload = {
-        user_id: user._id,
+        user_id: user._id as string,
         email: user.email,
         role: 'admin',
       };
 
       const token = jwt.sign(payload, config.JWT_SECRET, {
-        expiresIn: '1d',
+        expiresIn: '1000d',
       });
 
       return {
         status: 'success',
+        statusCode: 200,
         message: 'Login successfully',
         data: [
           {
@@ -79,6 +86,7 @@ export class UserService {
     } catch (error) {
       return {
         status: 'error',
+        statusCode: 500,
         message: error.message,
         data: [],
       };
@@ -123,9 +131,12 @@ export class UserService {
     // return changePasswordDto;
     try {
       if (changePasswordDto.old_password === changePasswordDto.new_password)
-        throw new BadRequestException(
-          'Old password and new password cannot be the same',
-        );
+        return {
+          status: 'error',
+          statusCode: 400,
+          message: 'Old password and new password cannot be the same',
+          data: [],
+        };
 
       const user = await this.UserModel.findOne(
         {
@@ -135,9 +146,12 @@ export class UserService {
       );
 
       if (!user)
-        throw new BadRequestException(
-          'There is no user with this email address',
-        );
+        return {
+          status: 'error',
+          statusCode: 400,
+          message: 'There is no user with this email address',
+          data: [],
+        };
 
       const isMatched = await bcrypt.compare(
         changePasswordDto.old_password,
@@ -145,9 +159,12 @@ export class UserService {
       );
 
       if (!isMatched)
-        throw new BadRequestException(
-          'Password is incorrect, please try again',
-        );
+        return {
+          status: 'error',
+          statusCode: 400,
+          message: 'Password is incorrect, please try again',
+          data: [],
+        };
 
       const saltRounds = 10;
       const hash = await bcrypt.hash(
@@ -166,12 +183,14 @@ export class UserService {
 
       return {
         status: 'success',
+        statusCode: 200,
         message: 'Password changed successfully',
         data: [{ modified }],
       };
     } catch (error) {
       return {
         status: 'error',
+        statusCode: 500,
         message: error.message,
         data: [],
       };
@@ -195,12 +214,14 @@ export class UserService {
 
       return {
         status: 'success',
+        statusCode: 200,
         message: 'Password reset successfully',
         data: [{ modified }],
       };
     } catch (error) {
       return {
         status: 'error',
+        statusCode: 500,
         message: error.message,
         data: [],
       };
@@ -215,12 +236,14 @@ export class UserService {
 
       return {
         status: 'success',
+        statusCode: 200,
         message: 'Password generated successfully',
         data: [{ password: hash }],
       };
     } catch (error) {
       return {
         status: 'error',
+        statusCode: 500,
         message: error.message,
         data: [],
       };

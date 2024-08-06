@@ -15,10 +15,10 @@ export class GradeSetting {
     @Prop()
     effective_date: string;
 
-    @Prop({ default: Date.now })
+    @Prop()
     created_at: Date;
 
-    @Prop({ default: Date.now })
+    @Prop()
     updated_at: Date;
 
 }

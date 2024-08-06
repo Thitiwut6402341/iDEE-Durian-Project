@@ -3,91 +3,113 @@ import { Document, mongo } from 'mongoose';
 
 export type PackingHouseRegisterDocument = PackingHouseRegister & Document;
 
-@Schema({ collection: 'PackingHouseRegisteration', versionKey: false })
+@Schema({ collection: 'PackingHouseRegistration', versionKey: false })
 export class PackingHouseRegister extends Document {
+  @Prop()
+  packing_house_name: string;
 
-    @Prop()
-    creator_id: mongo.ObjectId;
+  @Prop()
+  packing_house_code: string;
 
-    @Prop()
-    packing_house_name: string;
+  @Prop()
+  is_qa_verify: boolean;
 
-    @Prop()
-    packing_house_code: string;
+  @Prop()
+  qa_by: mongo.ObjectId;
 
-    @Prop()
-    is_qa_verify: boolean;
+  @Prop()
+  register_type: string;
 
-    @Prop()
-    qa_by: mongo.ObjectId;
+  @Prop()
+  province: string;
 
-    @Prop()
-    register_type: string;
+  @Prop()
+  district: string;
 
-    @Prop()
-    province: string;
+  @Prop()
+  sub_district: string;
 
-    @Prop()
-    district: string;
+  @Prop()
+  zip_code: string;
 
-    @Prop()
-    sub_district: string;
+  @Prop()
+  address: string;
 
-    @Prop()
-    zip_code: string;
+  @Prop()
+  registration_no?: string;
 
-    @Prop()
-    address: string;
+  @Prop()
+  doa_no?: string;
 
-    @Prop()
-    registration_no?: string;
+  @Prop()
+  doa_img?: string;
 
-    @Prop()
-    doa_no?: string;
+  @Prop()
+  gmp_no?: string;
 
-    @Prop()
-    doa_img?: string;
+  @Prop()
+  gmp_img?: string;
 
-    @Prop()
-    gmp_no?: string;
+  @Prop()
+  du_no?: string;
 
-    @Prop()
-    gmp_img?: string;
+  @Prop()
+  du_img?: string;
 
+  @Prop()
+  cn_no?: string;
 
-    @Prop()
-    latitude?: string;
+  @Prop()
+  cn_img?: string;
 
-    @Prop()
-    longitude?: string;
+  @Prop()
+  doa_exp?: Date;
 
-    @Prop()
-    title_name: string;
+  @Prop()
+  gmp_exp?: string;
 
-    @Prop()
-    owner_first_name: string;
+  @Prop()
+  du_exp?: string;
 
-    @Prop()
-    owner_last_name: string;
+  @Prop()
+  cn_exp?: string;
 
-    @Prop()
-    tax_id?: string;
+  @Prop()
+  latitude?: string;
 
-    @Prop()
-    phone: string;
+  @Prop()
+  longitude?: string;
 
-    @Prop()
-    email: string;
+  @Prop()
+  title_name: string;
 
-    @Prop()
-    capacity_per_day: number;
+  @Prop()
+  owner_first_name: string;
 
-    @Prop({ default: Date.now })
-    created_at: Date;
+  @Prop()
+  owner_last_name: string;
 
-    @Prop({ default: Date.now })
-    updated_at: Date;
+  @Prop()
+  tax_id?: string;
+
+  @Prop()
+  phone: string;
+
+  @Prop()
+  email: string;
+
+  @Prop()
+  capacity_per_day: number;
+
+  @Prop()
+  creator_id: mongo.ObjectId;
+
+  @Prop()
+  created_at: Date;
+
+  @Prop()
+  updated_at: Date;
 }
 
 export const PackingHouseRegisterSchema =
-    SchemaFactory.createForClass(PackingHouseRegister);
+  SchemaFactory.createForClass(PackingHouseRegister);

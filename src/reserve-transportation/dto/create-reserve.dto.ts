@@ -1,62 +1,61 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsArray, IsNumber, IsString } from 'class-validator';
 
 export class CreateReserveDto {
-    @IsString()
-    product_name: string;
+  @IsString()
+  product_name: string;
 
-    @IsString()
-    packing_house_code: string;
+  @IsString()
+  email_freight: string;
 
-    @IsString()
-    destination: string;
+  @IsString()
+  packing_house_code: string;
 
-    @IsString()
-    container_type: string;
+  @IsString()
+  destination: string;
 
-    @IsString()
-    container_no: string;
+  @IsArray()
+  orchard_codes: string[];
 
-    @IsNumber()
-    weight: number;
+  @IsString()
+  container_type: string;
 
-    @IsString()
-    date_time: string;
+  @IsNumber()
+  number_of_container: number;
 
-    @IsString()
-    product_list: string;
+  @IsNumber()
+  weight: number;
 
-    @IsString()
-    packaging_shape: string;
+  @IsString()
+  date_time: string;
 
-    @IsNumber()
-    volume: number;
+  // @IsString()
+  // product_list: string;
 
-    @IsString()
-    booking_ref: string;
+  // @IsString()
+  // packaging_shape: string;
 
-    @IsString()
-    freight_forwarder: string;
+  // @IsNumber()
+  // volume: number;
 
-    @IsString()
-    export_type: string;
+  // @IsString()
+  // booking_ref: string;
 
-    // @IsString()
-    air_line: string;
+  // @IsString()
+  // freight_forwarder: string;
 
-    // @IsString()
-    flight: string;
+  // @IsString()
+  // export_type: string;
 
-    // @IsString()
-    flight_depart_date: string;
+  // air_line: string;
 
-    // @IsString()
-    flight_arrive_date: string;
+  // flight: string;
 
-    @IsString()
-    trade_mark: string;
+  // flight_depart_date: string;
 
-    // @IsString()
-    packaging_no: string;
+  // flight_arrive_date: string;
 
+  // @IsString()
+  // trade_mark: string;
 
+  // packaging_no: string;
 }

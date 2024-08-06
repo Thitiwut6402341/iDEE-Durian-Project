@@ -1,11 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, mongo } from 'mongoose';
 
 export type TreesRegisterDocument = Document<TreesRegistration>;
 
 @Schema({ collection: 'TreesRegistration', versionKey: false })
 export class TreesRegistration {
-
   @Prop({ nullable: false })
   orchard_code: string;
 
@@ -16,7 +15,7 @@ export class TreesRegistration {
   tree_code: string;
 
   @Prop({ nullable: false })
-  cultivar: string;
+  cultivar_id: mongo.ObjectId;
 
   @Prop({ nullable: false })
   sub_district: string;
@@ -46,4 +45,5 @@ export class TreesRegistration {
   updated_at: Date;
 }
 
-export const TreesRegistrationSchema = SchemaFactory.createForClass(TreesRegistration);
+export const TreesRegistrationSchema =
+  SchemaFactory.createForClass(TreesRegistration);

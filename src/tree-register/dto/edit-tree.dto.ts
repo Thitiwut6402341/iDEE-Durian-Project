@@ -1,24 +1,23 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString, IsMongoId } from 'class-validator';
 
 export class EditTreeDto {
-    @IsString()
-    @IsNotEmpty()
-    tree_code: string;
+  @IsString()
+  @IsNotEmpty()
+  tree_code: string;
 
-    orchard_code: string;
+  @IsString()
+  @IsMongoId()
+  cultivar_id: string;
 
-    cultivar: string;
+  latitude: string;
 
-    latitude: string;
+  longitude: string;
 
-    longitude: string;
+  plant_year: number;
 
-    plant_year: number;
+  tree_height: number;
 
-    tree_height: number;
+  circumference: number;
 
-    circumference: number;
-
-    fruit_per_tree: number;
-
+  fruit_per_tree: number;
 }

@@ -1,40 +1,59 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, mongo } from 'mongoose';
 
 export type DurainRegisterDocument = HydratedDocument<DurianRegister>;
 
-@Schema({collection: 'DurianRegistration',  versionKey: false})
+@Schema({ collection: 'DurianRegistration', versionKey: false })
 export class DurianRegister {
 
-    @Prop({nullable: false})
+
+    @Prop({ nullable: false })
     tree_code: string;
 
-    @Prop({nullable: false})
+    @Prop({ nullable: false })
+    orchard_code: string;
+
+    @Prop({ nullable: false })
+    packing_house_code: string;
+
+    @Prop({ nullable: false })
+    rfid_code: string;
+
+    @Prop({ nullable: false })
     fruit_code: string;
 
-    @Prop({nullable: true})
-    weight: number;
+    @Prop({ nullable: true })
+    container_no: string;
 
-    @Prop({nullable: true})
-    number_of_segments: number;
+    @Prop({ nullable: true })
+    inspected_grade: string;
 
-    @Prop({nullable: true})
-    ripeness: number;
+    @Prop({ nullable: true })
+    gps_no: string;
 
-    @Prop({nullable: true})
-    method: string;
+    @Prop({ nullable: true })
+    inspected_by: mongo.ObjectId;
 
-    @Prop({nullable: true})
-    grade: string;
+    @Prop()
+    remarks: string;
 
-    @Prop({nullable: true})
+    @Prop()
     status: boolean;
+
+    @Prop()
+    is_reject: boolean;
+
+    @Prop()
+    booking_ref: string;
 
     @Prop()
     created_at: Date;
 
     @Prop()
     updated_at: Date;
+
+    @Prop()
+    registered_at: Date;
 }
 
 export const DurianRegisterSchema = SchemaFactory.createForClass(DurianRegister);

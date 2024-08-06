@@ -8,6 +8,9 @@ import { PackingHouseRegister, PackingHouseRegisterSchema } from 'src/schema/pac
 import { Destination, DestinationSchema } from 'src/schema/destination.schema';
 import { DurianRegistration, DurianRegistrationSchema } from 'src/schema/durian-registration.schema';
 import { ReserveTransportation, ReserveTransportationSchema } from 'src/schema/reserve-transportation/register-reserve.schema';
+import { Container, ContainerSchema } from 'src/container/schema/container.schema';
+import { ChemicalProcess1, ChemicalProcess1Schema } from 'src/schema/packing-schemas';
+import { QAProcess, QAProcessSchema } from 'src/schema/qa-process.schema';
 
 @Module({
   imports: [
@@ -16,7 +19,12 @@ import { ReserveTransportation, ReserveTransportationSchema } from 'src/schema/r
     { name: PackingHouseRegister.name, schema: PackingHouseRegisterSchema },
     { name: Destination.name, schema: DestinationSchema },
     { name: DurianRegistration.name, schema: DurianRegistrationSchema },
-    { name: ReserveTransportation.name, schema: ReserveTransportationSchema }
+    { name: ReserveTransportation.name, schema: ReserveTransportationSchema },
+    { name: Transportation.name, schema: TransportationSchema },
+    { name: Container.name, schema: ContainerSchema },
+    { name: ChemicalProcess1.name, schema: ChemicalProcess1Schema },
+    { name: QAProcess.name, schema: QAProcessSchema },
+
     ]),
   ],
   controllers: [TransportationController],
